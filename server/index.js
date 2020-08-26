@@ -5,4 +5,8 @@ const PORT = 3000;
 
 app.use(express.static('public'));
 
+app.get('/reviews/:product_id/list', (req, res) => {
+
+})
+
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));

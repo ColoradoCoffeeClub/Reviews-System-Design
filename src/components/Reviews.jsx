@@ -27,7 +27,7 @@ class Reviews extends React.Component {
 
   renderSort() {
     const sortOptions = ['newest', 'helpful', 'relevant'];
-    
+
     const { sort } = this.props;
 
     const totalReviews = Object.keys(this.props.reviews).length === 0 ? 0 : this.props.reviews.results.length;
@@ -69,7 +69,7 @@ class Reviews extends React.Component {
               <Grid key={index} className="user-review" container item direction="column">
                 <Grid container item justify="space-between">
                   <Grid item>
-                    <Rating 
+                    <Rating
                       value={rating}
                       precision={0.25}
                       size="small"
@@ -87,7 +87,7 @@ class Reviews extends React.Component {
                 </Grid>
                 <Grid item>
                   {
-                    body.length > 250 
+                    body.length > 250
                     ?
                     <Typography variant="body1" onClick={ () => this.toggleShowMore(review_id)}>
                       {
@@ -143,8 +143,8 @@ class Reviews extends React.Component {
           )
         }) }
         <Grid id="reviews-buttons" container item>
-          { 
-          results.length > this.state.showReviews 
+          {
+          results.length > this.state.showReviews
           ?
             <Button id="more-reviews" xs={4} disableElevation variant="outlined" onClick={this.loadMoreReviews.bind(this)}>
               More Reviews
@@ -189,7 +189,7 @@ class Reviews extends React.Component {
       }
     })
   }
-  
+
 }
 
 export default Reviews;
