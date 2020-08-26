@@ -1,3 +1,7 @@
+In this system design project, I designed and optimized the API for legacy front-end code of a retail portal and scaled this application to support 100 requests per second on AWS EC2 using a t2.micro instance. I followed the Agile methodology with regular code reviews and implemented both a MongoDB and PostgreSQL server to see which one would be more efficient, MongoDB won. 
+
+Below is the documentation for the API I built:
+
 # Reviews API
 
 ### Current Host
