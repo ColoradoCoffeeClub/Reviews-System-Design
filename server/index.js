@@ -159,17 +159,96 @@ const mockData = [
 }
 ]
 
+const mockMetaData = [
+  {
+    "product_id": "24",
+    "ratings": {
+        "1": 2,
+        "2": 2,
+        "4": 6,
+        "5": 14
+    },
+    "recommended": {
+        "0": 3,
+        "1": 21
+    },
+    "characteristics": {
+        "Fit": {
+            "id": 78,
+            "value": "3.8000"
+        },
+        "Length": {
+            "id": 79,
+            "value": "3.8500"
+        },
+        "Comfort": {
+            "id": 80,
+            "value": "4.0500"
+        },
+        "Quality": {
+            "id": 81,
+            "value": "3.9000"
+        }
+    }
+},
+{
+  "product_id": "25",
+  "ratings": {
+      "1": 2,
+      "5": 3
+  },
+  "recommended": {
+      "0": 2,
+      "1": 3
+  },
+  "characteristics": {
+      "Fit": {
+          "id": 82,
+          "value": "1.8000"
+      },
+      "Length": {
+          "id": 83,
+          "value": "2.2000"
+      },
+      "Comfort": {
+          "id": 84,
+          "value": "3.4000"
+      },
+      "Quality": {
+          "id": 85,
+          "value": "3.4000"
+      }
+  }
+}
+]
+
 app.get('/reviews/:product_id/list', (req, res) => {
   let product_id = req.params.product_id;
-  let selectedProduct;
+  let selectedProduct = null;
+  // Find the product for which the reviews are requested by iterating through product list and matching product ID
   for (let i = 0; i < mockData.length; i++) {
     if (mockData[i].product === product_id) {
-      console.log(mockData[i].product)
       selectedProduct = mockData[i];
     }
   }
-  console.log(req.query.sort)
+  // Initialize the array to send with whatever is currently in that product's results array (holding reviews)
+  let arrayToSend = selectedProduct.results;
+  // If sort query specified to be helpful, sort the results array by the helpfulness property (most helpful at top)
+  if (req.query.sort === 'helpful') {
+    arrayToSend = selectedProduct.results.sort((a,b) => b.helpfulness - a.helpfulness);
+  }
+  // If sort query specified to be newest, sort the results array by the date created property (most recent at top)
+  if (req.query.sort === 'newest') {
+    arrayToSend = selectedProduct.results.sort((a,b) => new Date(b.date) - new Date(a.date));
+  }
+  //if count is specified only send up to that amount of reviews back
+  if (req.query.count) {
+    arrayToSend = arrayToSend.slice(0, req.query.count)
+  }
+  selectedProduct.results = arrayToSend;
   res.send(selectedProduct)
 })
+
+
 
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));
