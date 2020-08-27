@@ -249,6 +249,16 @@ app.get('/reviews/:product_id/list', (req, res) => {
   res.send(selectedProduct)
 })
 
-
+app.get('/reviews/:product_id/meta', (req, res) => {
+  // Find the product for which metadata is requested by iterating through product list and matching product ID
+  let selectedData = null;
+  let product_id = req.params.product_id;
+  for (let i = 0; i < mockData.length; i++) {
+    if (mockMetaData[i].product_id === product_id) {
+      selectedData = mockMetaData[i];
+    }
+  }
+  res.send(selectedData);
+})
 
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));

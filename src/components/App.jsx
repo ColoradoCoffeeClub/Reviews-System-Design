@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   fetchMetadata() {
-    fetch(`http://52.26.193.201:3000/reviews/${this.state.product_id}/meta`)
+    fetch(`/reviews/${this.state.product_id}/meta`)
       .then(res => res.json())
       .then(data => {
         this.setState({
