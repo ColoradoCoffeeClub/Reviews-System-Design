@@ -307,5 +307,19 @@ app.put('/reviews/helpful/:review_id', (req, res) => {
    selectedReview.helpfulness++;
 })
 
+app.put('/reviews/report/:review_id', (req, res) => {
+    //USING MOCK DATA THAT DOES NOT EXIST YET IN THIS DOCUMENT, WILL EXIST WHEN DATABASE IS SEEDED
+    //Find the review for which a the reported property needs to be needs to be changed from the database
+   let selectedProduct = null;
+   let review_id = req.params.review_id;
+   for (let i = 0; i < mockData.length; i++) {
+     if (mockData[i].review_id === review_id) {
+       selectedReview = mockData[i];
+     }
+   }
+   //Change the reported property to be true
+   selectedReview.reported = true;;
+})
+
 
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));
