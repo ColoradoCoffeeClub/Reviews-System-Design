@@ -169,7 +169,7 @@ class Reviews extends React.Component {
 
   markHelpful(review_id) {
     if (this.state.markedHelpful[review_id] === true) return;
-    fetch(`http://52.26.193.201:3000/reviews/helpful/${review_id}/`, { method: 'PUT' })
+    fetch(`/reviews/helpful/${review_id}/`, { method: 'PUT' })
       .then(() => {
         this.props.update();
         this.setState({ markedHelpful: {...this.state.markedHelpful, [review_id]: true} })
@@ -177,7 +177,7 @@ class Reviews extends React.Component {
   }
 
   reportReview(review_id) {
-    fetch(`http://52.26.193.201:3000/reviews/report/${review_id}/`, { method: 'PUT' })
+    fetch(`/reviews/report/${review_id}/`, { method: 'PUT' })
       .then(() => this.props.update())
   }
 
