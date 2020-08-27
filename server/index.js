@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 
-app.use(express.json())
+app.use(express.json());
 app.use(express.static('public'));
 
 const mockData = [
@@ -292,6 +292,20 @@ app.post('/reviews/:product_id', (req, res) => {
    selectedProduct.results.push(newReview);
    res.status(201).end();
 });
+
+app.put('/reviews/helpful/:review_id', (req, res) => {
+    //USING MOCK DATA THAT DOES NOT EXIST YET IN THIS DOCUMENT, WILL EXIST WHEN DATABASE IS SEEDED
+    // Find the review for which a the helpful property needs to be needs to be incremented from the database
+   let selectedProduct = null;
+   let review_id = req.params.review_id;
+   for (let i = 0; i < mockData.length; i++) {
+     if (mockData[i].review_id === review_id) {
+       selectedReview = mockData[i];
+     }
+   }
+   //increment the number at the helpful property
+   selectedReview.helpfulness++;
+})
 
 
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));
