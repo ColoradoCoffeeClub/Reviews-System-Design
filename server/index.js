@@ -253,12 +253,45 @@ app.get('/reviews/:product_id/meta', (req, res) => {
   // Find the product for which metadata is requested by iterating through product list and matching product ID
   let selectedData = null;
   let product_id = req.params.product_id;
-  for (let i = 0; i < mockData.length; i++) {
+  for (let i = 0; i < mockMetaData.length; i++) {
     if (mockMetaData[i].product_id === product_id) {
       selectedData = mockMetaData[i];
     }
   }
   res.send(selectedData);
-})
+});
+
+app.post('/reviews/:product_id', (req, res) => {
+   // Find the product for which a new review needs to be inserted
+   let selectedProduct = null;
+   let product_id = req.params.product_id;
+   for (let i = 0; i < mockData.length; i++) {
+     if (mockData[i].product === product_id) {
+       selectedProduct = mockData[i];
+     }
+   }
+   // Create new ID integer by sorting the current array of reviews, finding the most recent review, and adding 1 to its ID
+   let sortedNewest = selectedProduct.results.sort((a,b) => new Date(b.date) - new Date(a.date));
+   let lastIndex = sortedNewest.length - 1;
+   let newID = sortedNewest[lastIndex].review_id + 2;
+   // Create a new review based on the data sent in the req body
+   let timestamp = new Date();
+   let newReview = {
+    "review_id": newID,
+    "rating": req.body.rating,
+    "summary": req.body.summary,
+    "recommend": req.body.recommend,
+    "response": null,
+    "body": req.body.body,
+    "date": timestamp,
+    "reviewer_name": req.body.name,
+    "helpfulness": 0,
+    "photos": req.body.photos
+   }
+  // Push the newly created review to the array containing the reviews in the selected product
+   selectedProduct.results.push(newReview);
+   res.status(201).end();
+});
+
 
 app.listen(PORT, () => console.log(`Listening on port:${PORT}`));
