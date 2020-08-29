@@ -29,6 +29,7 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "express": "^4.17.1",
     "moment": "^2.27.0",
+    "mongoose": "^5.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2"
