@@ -1,7 +1,7 @@
 const faker = require("faker");
 const fs = require("fs");
 
-let numberOfRecords = 1000;
+let numberOfRecords = 10000000;
 
 const generateData = () => {
   const startTime = Date.now(); //timestamp for when script starts
