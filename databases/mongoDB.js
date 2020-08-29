@@ -10,7 +10,7 @@ const Review = mongoose.model('review', {
   response: {type: String},
   body: {type: String},
   date: {type: Date, default: Date.now, required: true},
-  reviewer_name: {type: Number, required: true},
+  reviewer_name: {type: String, required: true},
   reviewer_email: {type: String, required: true}
   helpfulness: {type: Number, default: 0},
   photos: [{id: Number, url: String}],
