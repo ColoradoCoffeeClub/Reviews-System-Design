@@ -2,12 +2,13 @@ const faker = require("faker");
 const fs = require("fs");
 
 let numberOfRecords = 10000000;
+let file = "data.json";
 
 const generateData = () => {
   const startTime = Date.now(); //timestamp for when script starts
 
   //create the file starting with an open bracket
-  fs.writeFileSync("data.json", "[");
+  fs.writeFileSync(file, "[");
   let i = 1;
   //Starting at 1, do the following for each record until reached number of records
   while (i <= numberOfRecords) {
@@ -65,11 +66,11 @@ const generateData = () => {
     };
 
     //append each record to the created file with commas in between and a final closing bracket
-    fs.appendFileSync("data.json", JSON.stringify(review, null, 1));
+    fs.appendFileSync(file, JSON.stringify(review, null, 1));
 
     i !== numberOfRecords
-      ? fs.appendFileSync("data.json", ",")
-      : fs.appendFileSync("data.json", "]");
+      ? fs.appendFileSync(file, ",")
+      : fs.appendFileSync(file, "]");
     i++;
 
     //console logs to track timing
