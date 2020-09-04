@@ -1,3 +1,9 @@
 node_modules
 coverage
 public/bundle.js
+databases/data.json
+databases/data1k.json
+databases/data10.json
+databases/data100.json
+databases/data100k.json
+databases/data1M.json
