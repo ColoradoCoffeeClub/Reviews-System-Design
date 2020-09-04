@@ -20,7 +20,6 @@ const deleteReview = (review_id_param) => {
 
 const getReviews = (productID, amount) => {
   return Review.find({ product_id: productID })
-    .hint({ product_id: 1 })
     .limit(amount)
     .then((data) => {
       console.log(`Retrieved ${data.length} reviews`);

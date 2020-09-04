@@ -21,6 +21,7 @@ app.get("/reviews/:product_id/list", (req, res) => {
     let queryEnd = Date.now();
     let timeTaken = queryEnd - queryStart;
     console.log("query time", timeTaken + " ms");
+    reviews = reviews.filter((review) => review.reported === 0);
     res.send(reviews);
   });
 });
