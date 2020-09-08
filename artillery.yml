@@ -1,35 +1,41 @@
 config:
   target: http://localhost:3000
-  pool: 10
+  pool: 20
   processor: "./scenarioHelpers.js"
   phases:
     [
-      { duration: 30, arrivalRate: 1, rampTo: 10, name: "Warm up phase" },
+      { duration: 20, arrivalRate: 10, rampTo: 25, name: "Warm up phase" },
       {
-        duration: 50,
-        arrivalRate: 10,
-        rampTo: 50,
+        duration: 25,
+        arrivalRate: 25,
+        rampTo: 40,
         name: "Prepare for max load",
       },
-      { duration: 50, arrivalRate: 50, name: "MAX LOAD" },
+      { duration: 60, arrivalRate: 40, name: "MAX LOAD" },
     ]
 scenarios:
   - name: "Get reviews"
     flow:
-      - function: "randomProductID"
-      - get:
-          url: "/"
-      - get:
-          url: "/reviews/{{ product_id }}/meta"
-      - get:
-          url: "/reviews/{{ product_id }}/list"
+      - loop:
+          - function: "randomProductID"
+          - get:
+              url: "/"
+          - get:
+              url: "/reviews/{{ product_id }}/meta"
+          - get:
+              url: "/reviews/{{ product_id }}/list"
+            count: 30
   - name: "Mark review as helpful"
     flow:
-      - function: "randomReviewID"
-      - put:
-          url: "/reviews/helpful/{{ review_id }}"
+      - loop:
+          - function: "randomReviewID"
+          - put:
+              url: "/reviews/helpful/{{ review_id }}"
+            count: 30
   - name: "Report a review"
     flow:
-      - function: "randomReviewID"
-      - put:
-          url: "/reviews/report/{{ review_id }}"
+      - loop:
+          - function: "randomReviewID"
+          - put:
+              url: "/reviews/report/{{ review_id }}"
+            count: 30
