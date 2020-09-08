@@ -8,6 +8,7 @@ const {
   getReviews,
   findHighestID,
 } = require("../databases/controller.js");
+require("newrelic");
 
 app.use(express.json());
 app.use(express.static("public"));

@@ -1,0 +1,35 @@
+config:
+  target: http://localhost:3000
+  pool: 10
+  processor: "./scenarioHelpers.js"
+  phases:
+    [
+      { duration: 30, arrivalRate: 1, rampTo: 10, name: "Warm up phase" },
+      {
+        duration: 50,
+        arrivalRate: 10,
+        rampTo: 50,
+        name: "Prepare for max load",
+      },
+      { duration: 50, arrivalRate: 50, name: "MAX LOAD" },
+    ]
+scenarios:
+  - name: "Get reviews"
+    flow:
+      - function: "randomProductID"
+      - get:
+          url: "/"
+      - get:
+          url: "/reviews/{{ product_id }}/meta"
+      - get:
+          url: "/reviews/{{ product_id }}/list"
+  - name: "Mark review as helpful"
+    flow:
+      - function: "randomReviewID"
+      - put:
+          url: "/reviews/helpful/{{ review_id }}"
+  - name: "Report a review"
+    flow:
+      - function: "randomReviewID"
+      - put:
+          url: "/reviews/report/{{ review_id }}"
