@@ -23,9 +23,9 @@ Below is some images I took of my metrics followed by the documentation for the 
 
 #### Response from API with GET Reviews and GET Metadata routes:
 
-![img5](../master/readme_images/images/Getreviews)
+![img5](../master/readme_images/images/Getreviews.png)
 
-![img6](../master/readme_images/images/Reviewsmeta)
+![img6](../master/readme_images/images/Reviewsmeta.png)
 
 # Reviews API
 
