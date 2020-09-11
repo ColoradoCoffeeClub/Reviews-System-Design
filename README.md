@@ -1,11 +1,17 @@
-In this system design project, I designed and optimized the API for legacy front-end code of a reviews microservice which was part of a larger retail portal and scaled this application to support 100 requests per second on AWS EC2 using a t2.micro instance. I followed the Agile methodology with regular code reviews and implemented both a MongoDB and PostgreSQL server to see which one would be more efficient, MongoDB won. 
+I designed and optimized the API for legacy front-end code of a reviews microservice which was part of a larger retail portal and scaled this application to support 100+ requests per second on AWS EC2 using a t2.micro instance. I followed the Agile methodology with regular code reviews and implemented a MongoDB database that I seeded with 10M records. Code for the database can be found in the databases folder. Code for the RESTful API routes and Node/Express server can be found in the server folder. I had a blast challenging myself to learn more about back-end architecture through this system design application.
 
-Below is the documentation for the API I built:
+Below is some images I took of my metrics followed by the documentation for the API I built:
+
+# Metrics & Milestone Log
+
+Imported 10 Million records into the MongoDB took approx. 18 minutes using the data generation script found in the Databases folder:
+
+
 
 # Reviews API
 
 ### Current Host
-The API can currently be found at (insert URL here)
+The API can currently be found at `http://ec2-3-131-159-101.us-east-2.compute.amazonaws.com:8080/`
 
 ### List Reviews
 Returns a list of reviews for a particular product specified by the product_id parameter.  
