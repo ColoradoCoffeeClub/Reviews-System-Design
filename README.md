@@ -4,9 +4,28 @@ Below is some images I took of my metrics followed by the documentation for the 
 
 # Metrics & Milestone Log
 
-Imported 10 Million records into the MongoDB took approx. 18 minutes using the data generation script found in the Databases folder:
+#### Imported 10 Million records into the MongoDB took approx. 18 minutes using the data generation script found in the Databases folder:
+
+![img1](../master/readme_images/images/image4.png)
 
 
+#### MongoDB queries in controller file in databases folder:
+
+![img2](../master/readme_images/images/image23.png)
+
+#### Query Times all confirmed to be <50ms with New Relic:
+
+![img3](../master/readme_images/images/image25.png)
+
+#### Was able to achieve 130 RPS when tested with Artillery:
+
+![img4](../master/readme_images/images/image5.png)
+
+#### Response from API with GET Reviews and GET Metadata routes:
+
+![img5](../master/readme_images/images/Getreviews)
+
+![img6](../master/readme_images/images/Reviewsmeta)
 
 # Reviews API
 
