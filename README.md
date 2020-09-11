@@ -27,6 +27,7 @@ Below is some images I took of my metrics followed by the documentation for the 
 
 ![img6](../master/readme_images/images/Reviewsmeta.png)
 
+
 # Reviews API
 
 ### Current Host
@@ -43,7 +44,6 @@ Parameters
 | Parameter  | Type    | Description                                                  |
 | ---------- | ------- | ------------------------------------------------------------ |
 | product_id | integer | Specifies the product for which to retrieve reviews.         |
-| sort       | text    | Changes the sort order of reviews to be based on "newest" or most "helpful." |
 
 ### Get Review Metadata
 
