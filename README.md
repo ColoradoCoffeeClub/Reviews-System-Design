@@ -25,7 +25,7 @@ Below is some images I took of my metrics followed by the documentation for the 
 
 ![img5](../master/readme_images/images/reviewslist.png)
 
-![img6](../master/readme_images/images/reviewsmeta.png)
+![img6](../master/readme_images/images/Reviewsmeta.png)
 
 # Reviews API
 
