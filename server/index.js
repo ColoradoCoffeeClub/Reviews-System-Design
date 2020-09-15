@@ -114,7 +114,7 @@ app.put("/reviews/helpful/:review_id", (req, res) => {
   //Start timer
   let queryStart = Date.now();
   //Interact with controller.js function to update the review
-  updateReview(review_id, { $set: { helpfulness: 1 } }).then((data) => {
+  updateReview(review_id, { $inc: { helpfulness: 1 } }).then((data) => {
     //End timer and log time taken
     let queryEnd = Date.now();
     let timeTaken = queryEnd - queryStart;
