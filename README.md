@@ -15,7 +15,7 @@ Below is some images I took of my metrics followed by the documentation for the 
 
 #### Query Times all confirmed to be <50ms with New Relic:
 
-![img3](../master/readme_images/images/image25.png)
+![img3](../master/readme_images/images/NRelic.png)
 
 #### Was able to achieve 130 RPS when tested with Artillery:
 
